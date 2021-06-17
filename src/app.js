@@ -7,6 +7,7 @@ import cors from 'cors';
 
 import orderRoutes from './routes/orders.routes'
 import authRoutes from './routes/auth.routes'
+import userRoutes from './routes/user.routes'
 const app = express();
 
 
@@ -24,8 +25,9 @@ app.use(express.json());
 
 
 // Routes
-app.use("/api", orderRoutes);
-app.use("/api", authRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 
 
 

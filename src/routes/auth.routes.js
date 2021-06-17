@@ -4,7 +4,7 @@ import { Login, verifyAccount} from '../controllers/authCtrl'
 
 const router = Router();
 
-
+//   Route  "/auth"
  router.post('/', Login)
 
 // router.post('/', login)

@@ -1,7 +1,10 @@
   
 export const querys = {
-    getAllOrders: "SELECT * FROM orden",
-    getUser: "SELECT * FROM users WHERE username=@username AND password=@password",
+    getAllOrders: "CALL ALLORDERS",
+    getUser: "CALL VALID(?, ?)",
+    getToken: "CALL TOKEN(?)",
+    findOne: "CALL FINDONE(?)",
+    addUser:"CALL ADDUSER(?,?,?,?)"
 };
 
 

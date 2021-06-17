@@ -6,7 +6,7 @@ export const getProducts = async (req, res) => {
     pool.query(querys.getAllOrders,(err, rows, fields)=>{
         pool.end();
         if (err) throw err;  
-        res.json(rows); 
+        res.json(rows[0]); 
     });
   } catch (error) {
     res.status(500).json('Error server sql');

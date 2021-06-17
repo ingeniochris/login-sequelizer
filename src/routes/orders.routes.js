@@ -3,7 +3,7 @@ import { check } from 'express-validator';
 import {getProducts} from '../controllers/ordersCtrl'
 
 const router = Router();
-
-router.get('/orders', getProducts)
+// router "/ordes"
+router.get('/', getProducts)
 
 export default router;
