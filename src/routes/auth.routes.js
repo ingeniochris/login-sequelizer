@@ -1,15 +1,18 @@
 import {Router} from 'express';
 import { check } from 'express-validator';
-import { Login, verifyAccount} from '../controllers/authCtrl'
+import {Authentic, UserAuth} from '../controllers/authCtrl';
+import {AuthMiddleware} from '../middleware/Auth';
 
 const router = Router();
 
-//   Route  "/auth"
- router.post('/', Login)
+router.post('/', 
+Authentic
+);
 
-// router.post('/', login)
-// router.get("/verify/:token", verifyAccount);
-
-// router.post("/login", login);
+// Obtiene el usuario autenticado
+router.get('/',
+ AuthMiddleware,
+ UserAuth
+);
 
 export default router;

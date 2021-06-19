@@ -1,21 +1,26 @@
-import Sequelize from 'sequelize';
-import database from '../database/connection';
+import { Model, DataTypes } from 'sequelize';
+import { sequelize } from "../database/";
 
-var Order = database.define('order', {
+
+class Order extends Model {}
+  Order.init({
   idOrder: {
-    type: database.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
   },
-  status: database.STRING,
-  paymentMethod: database.STRING,
-  totalOrder: database.FLOAT,
-  subOrder: database.FLOAT,
-  discount: database.FLOAT,
-  discountCoupon: database.STRING,
-  customerName: database.STRING,
-  tel: database.STRING,
-  infoDeliver: database.STRING
+  status: DataTypes.STRING,
+  paymentMethod: DataTypes.STRING,
+  totalOrder: DataTypes.FLOAT,
+  subOrder: DataTypes.FLOAT,
+  discount: DataTypes.FLOAT,
+  discountCoupon: DataTypes.STRING,
+  customerName: DataTypes.STRING,
+  tel: DataTypes.STRING,
+  infoDeliver: DataTypes.STRING
+}, {
+    sequelize,
+    modelName: "order"
 });
 
-export default Order
+export default Order;
+

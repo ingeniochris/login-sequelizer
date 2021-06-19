@@ -1,22 +1,24 @@
-import sql from "mysql";
 import config from "../config/appConfig";
+import { Sequelize } from 'sequelize'; 
 
-export const dbSettings = {
-        connectionLimit: 10,
-        host: 'localhost',
-        user: config.dbUser,
-        password: config.dbPassword,
-        database: config.dbDatabase
-};
+
+export const sequelize = new Sequelize(
+  config.dbDatabase,
+  config.dbUser,
+  config.dbPassword,
+  {
+    host: config.host,
+    dialect: config.dbServer,
+  }
+);
 
 export const getConnection = async () => {
   try {
-    const pool = await sql.createPool(dbSettings);
-    console.log('success db connection')
-    return pool;
+   const conn = await sequelize.sync({ force: false })
+   if(!conn) console.log('No se conecto a la DB')
+   //return conn
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 };
 
-export { sql };
